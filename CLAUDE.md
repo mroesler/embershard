@@ -29,6 +29,41 @@ Only create a subfolder when there is something real to put in it.
 
 ---
 
+## Git & Branching
+
+### Branch strategy
+- No Git Flow. No `develop` branch.
+- **Feature work** (new functionality, bug fixes, refactors) → create a branch, open a PR, merge when CI passes.
+- **Config/chore commits** (`chore(*)`, `ci(*)`) → push directly to `main`. No PR needed.
+
+### Branch naming
+- `feat/<short-description>` — new features
+- `fix/<short-description>` — bug fixes
+- `refactor/<short-description>` — refactoring
+
+### Commit messages
+- Follow **Conventional Commits**: `type(scope): description`
+- Valid types: `feat`, `fix`, `refactor`, `test`, `chore`, `ci`, `docs`
+- Enforced by commitlint on every commit via Husky
+
+### Main branch rules — NEVER violate
+- **Never force-push to `main`.**
+- **Never delete `main`.**
+- **Never push broken code to `main`** — CI must pass.
+- Feature/fix branches must have CI passing before merging.
+
+### Config changes — commit and push immediately
+- Any change to a config-only file (`.claude/settings.json`, `.github/workflows/`, `eslint.config.js`, `vitest.config.ts`, `tsconfig.json`, `.husky/`, etc.) must be committed and pushed in the same operation — do not leave config changes uncommitted.
+- Use `chore(config):` or `chore(ci):` as appropriate.
+
+### Releases — manual only
+- Releases are created only when explicitly requested ("create new release" or similar).
+- Claude reads commits since the last tag, proposes a version bump (patch/minor/major), waits for confirmation, then: bumps `package.json`, commits `chore(release): vX.Y.Z`, tags, and pushes.
+- The release workflow triggers automatically on tag push — runs CI, builds, creates a GitHub Release with the dist zip attached.
+- `chore`/`ci`/`test`/`docs`-only commits do not warrant a release.
+
+---
+
 ## Security
 
 ### Write secure code — always
