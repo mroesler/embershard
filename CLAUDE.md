@@ -88,6 +88,13 @@ Only create a subfolder when there is something real to put in it.
 
 ---
 
+## Shell Commands
+
+- The working directory is always the project root. Never prefix shell commands with `cd <project-dir> &&`.
+- Run `git`, `npm`, and all other CLI tools directly — e.g. `git status`, `npm test`, not `cd E:/... && git status`.
+
+---
+
 ## Git & Branching
 
 ### Branch strategy
