@@ -10,6 +10,32 @@
       "Bash(git log*)",
       "Bash(git status*)",
       "Bash(git diff*)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets.*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/*.p12)",
+      "Read(**/*.pfx)",
+      "Read(**/credentials.*)",
+      "Read(**/.npmrc)",
+      "Read(**/.netrc)",
+      "Write(**/.env)",
+      "Write(**/.env.*)",
+      "Write(**/secrets.*)",
+      "Write(**/*.pem)",
+      "Write(**/*.key)",
+      "Write(**/*.p12)",
+      "Write(**/*.pfx)",
+      "Write(**/credentials.*)",
+      "Bash(curl*)",
+      "Bash(wget*)",
+      "Bash(rm -rf*)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean -f*)"
     ]
   }
 }
