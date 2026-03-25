@@ -10,6 +10,7 @@ export default defineConfig({
   test: {
     environment: 'happy-dom',
     globals: true,
+    passWithNoTests: true,
     include: ['tests/**/*.test.ts'],
     coverage: {
       provider: 'v8',
