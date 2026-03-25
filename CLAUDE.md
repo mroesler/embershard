@@ -8,6 +8,9 @@
 - Target **100% line and branch coverage** on all files.
 - If 100% coverage is not achievable for a specific file or branch (e.g. Excalibur engine internals, platform-specific code, unreachable defensive branches), explicitly tell the user why and document it with a `// coverage: ignore` comment at the relevant line.
 
+### Auto-invocation — REQUIRED
+At the end of every completed task or workstep that touched any file under `src/`, Claude must ensure the corresponding `tests/` files are created or updated before considering the task done. Do not wait to be asked. This does not need to happen after every individual file edit mid-task — only once the task as a whole is complete.
+
 ### When to write tests
 - Every new file in `src/` gets a corresponding test file in `tests/`.
 - When code is changed, updated, or deleted — update, fix, or remove the corresponding tests.
