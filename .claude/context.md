@@ -22,6 +22,18 @@
 - Has a tilemap plugin (`@excaliburjs/plugin-tiled`) for Tiled map editor integration — critical for Zelda-style tile-based worlds
 - Evaluated as suitable for Zelda NES style game: supports tile-based scenes, sprite animation, collision, scene management, and entity-component patterns
 
+## Excalibur.js Engine Evaluation (v0.32.0, March 2026)
+
+All core requirements confirmed supported. Gotchas reviewed and resolved:
+
+| Gotcha | Resolution |
+|--------|------------|
+| Rooms smaller than viewport (camera flicker) | Non-issue — all rooms are a fixed standard size, always >= viewport |
+| Pre-1.0 breaking changes | Pin exact versions with `--save-exact` on install; check changelog before upgrading |
+| No built-in animation state machine | Will build our own per-entity (planned dev work) |
+| No audio bus/channel grouping | Track music and SFX instances manually; not a blocker |
+| Browser autoplay blocked until user interaction | Title screen "Press any key to start" handles this naturally |
+
 ## Planned Delivery
 - Browser-based primary target
 - PC executable via Electron (planned, not immediate)
