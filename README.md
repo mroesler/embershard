@@ -20,6 +20,25 @@ Early development. Private repository.
 
 ---
 
+## Development
+
+**Requirements:** Node.js 24+ (see `.nvmrc`), npm 10+
+
+```bash
+npm install        # install dependencies
+npm start          # dev server at http://localhost:9999
+npm test           # run tests
+npm run test:coverage   # tests + coverage report
+npm run lint       # lint
+npm run format     # format with Prettier
+npm run build      # type-check + production build → dist/
+npm run analyze    # build + open bundle size visualizer
+```
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) — enforced by commitlint.
+
+---
+
 ## License
 
 ### Code

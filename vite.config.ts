@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
@@ -12,5 +13,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    sourcemap: true,
   },
-});
+  plugins: [
+    mode === 'analyze' &&
+      visualizer({
+        open: true,
+        filename: 'dist/bundle-analysis.html',
+        gzipSize: true,
+        brotliSize: true,
+      }),
+  ],
+}));
