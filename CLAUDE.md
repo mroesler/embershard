@@ -1,5 +1,64 @@
 # Embershard — Claude Rules
 
+## Tech Stack
+
+### Runtime & Language
+| Tool | Version | Purpose |
+|---|---|---|
+| Node.js | `>=24.0.0` (pinned: 24.14.0 via `.nvmrc`) | Runtime |
+| TypeScript | `6.0.2` | Language — strict mode, `noEmit`, targets ES2020 |
+
+### Game Engine
+| Tool | Version | Purpose |
+|---|---|---|
+| Excalibur.js | `0.32.0` | 2D game engine (canvas-based, browser-first) |
+| @excaliburjs/plugin-tiled | `0.32.0` | Tiled map format loader for Excalibur |
+
+### Build & Dev
+| Tool | Version | Purpose |
+|---|---|---|
+| Vite | `8.0.2` | Dev server (port 9999) and production bundler |
+| rollup-plugin-visualizer | `7.0.1` | Bundle size analysis (`npm run analyze`) |
+
+### Testing
+| Tool | Version | Purpose |
+|---|---|---|
+| Vitest | `4.1.1` | Test runner (mirrors Jest API) |
+| @vitest/coverage-v8 | `4.1.1` | V8-native coverage — 100% thresholds enforced |
+| happy-dom | `20.8.8` | Browser-like DOM environment (no real canvas needed) |
+
+### Linting & Formatting
+| Tool | Version | Purpose |
+|---|---|---|
+| ESLint | `10.1.0` | Linting (flat config format) |
+| @typescript-eslint/parser | `8.57.2` | TypeScript AST parser for ESLint |
+| @typescript-eslint/eslint-plugin | `8.57.2` | TypeScript-aware lint rules |
+| eslint-config-prettier | `10.1.8` | Disables ESLint rules that conflict with Prettier |
+| Prettier | `3.8.1` | Code formatting |
+
+### Git Hygiene
+| Tool | Version | Purpose |
+|---|---|---|
+| Husky | `9.1.7` | Git hooks runner |
+| lint-staged | `16.4.0` | Run linters on staged files only (pre-commit) |
+| @commitlint/cli | `20.5.0` | Enforce conventional commits (commit-msg hook) |
+| @commitlint/config-conventional | `20.5.0` | Conventional commits ruleset |
+
+### CI/CD
+| Tool | Notes |
+|---|---|
+| GitHub Actions | CI on push/PR to main; release workflow on `v*.*.*` tags |
+| Dependabot | Weekly npm dependency updates (max 5 open PRs) |
+
+### Path Alias
+`@/` → `src/` — configured in both `tsconfig.json` (type checking) and `vite.config.ts` (bundler resolution).
+
+### Compatibility Notes
+- `@typescript-eslint` 8.x declares `typescript <6.0.0` as a peer requirement but works correctly with TypeScript 6.0 in practice. Upgrade `@typescript-eslint` to 9.x when it releases with official TS 6.0 support.
+- `tsconfig.json` uses `ignoreDeprecations: "6.0"` to acknowledge the `baseUrl` deprecation (removed in TypeScript 7.0). Migrate to `paths`-only config when TypeScript 7.0 approaches.
+
+---
+
 ## Code Structure
 
 ### One file, one concern

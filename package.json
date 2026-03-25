@@ -25,7 +25,10 @@
     "excalibur": "0.32.0"
   },
   "lint-staged": {
-    "src/**/*.ts": ["prettier --write", "eslint --fix"]
+    "src/**/*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.0",
@@ -40,8 +43,8 @@
     "lint-staged": "16.4.0",
     "prettier": "3.8.1",
     "rollup-plugin-visualizer": "7.0.1",
-    "typescript": "5.8.3",
-    "vite": "6.4.1",
+    "typescript": "6.0.2",
+    "vite": "8.0.2",
     "vitest": "4.1.1"
   }
 }
