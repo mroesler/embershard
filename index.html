@@ -18,26 +18,41 @@
         justify-content: center;
       }
 
+      /*
+       * game-layout max-width formula:
+       *   canvas-wrapper height = (available - hud-top) * 3/4
+       *   canvas width at 2:1   = canvas-wrapper height * 2
+       *   available             = 100vh - 100px (body padding)
+       *   hud-top               = 42px (36px height + 6px padding-bottom)
+       *
+       *   max-width = (100vh - 100px - 42px) * 0.75 * 2
+       *             = (100vh - 142px) * 1.5
+       *
+       * This constrains the layout column to the canvas width so that
+       * the HP/MP bars and the inventory strip align exactly with the
+       * left and right edges of the playing area.
+       */
       .game-layout {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 100%;
+        max-width: calc((100vh - 142px) * 1.5);
       }
 
-      /* ── Top HUD: HP left, MP right, each 1/3 width ─── */
+      /* ── Top HUD: HP and MP bars ─────────────────────── */
       .hud-top {
         flex-shrink: 0;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        gap: 8px;
         height: 36px;
         padding-bottom: 6px;
       }
 
       .resource-bar {
         position: relative;
-        width: 33.333%;
+        width: 20%;
         height: 100%;
         background: rgba(10, 10, 15, 0.72);
         border: 2px solid rgba(210, 210, 220, 0.88);
@@ -56,7 +71,6 @@
         position: relative;
       }
 
-      /* 3D highlight: lighter top half, darker bottom */
       .bar-fill::after {
         content: '';
         position: absolute;
@@ -73,7 +87,6 @@
       .health-fill { background: rgba(200, 35, 35, 0.92); }
       .mana-fill   { background: rgba(30,  80, 210, 0.92); }
 
-      /* Pixel-style text shadow instead of blur — stays crisp at any size */
       .bar-label {
         position: absolute;
         inset: 0;
@@ -94,7 +107,7 @@
         z-index: 1;
       }
 
-      /* ── Canvas: fills 3/4 of remaining vertical space ─ */
+      /* ── Canvas: 3/4 of remaining vertical space ─────── */
       .canvas-wrapper {
         flex: 3;
         display: flex;
@@ -108,8 +121,9 @@
         image-rendering: pixelated;
         image-rendering: crisp-edges;
         width: 100% !important;
-        height: 100% !important;
-        object-fit: contain !important;
+        height: auto !important;
+        aspect-ratio: 512 / 256 !important;
+        max-height: 100% !important;
       }
 
       /* ── Bottom HUD: reserved for inventory / weapons ── */

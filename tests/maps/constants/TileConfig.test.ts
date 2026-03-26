@@ -6,17 +6,17 @@ describe('TileConfig', () => {
     expect(TILE_SIZE).toBe(16);
   });
 
-  it('screen grid is 16x15 tiles (NES layout)', () => {
-    expect(SCREEN_TILES_X).toBe(16);
-    expect(SCREEN_TILES_Y).toBe(15);
+  it('screen grid is 32x16 tiles (widescreen layout)', () => {
+    expect(SCREEN_TILES_X).toBe(32);
+    expect(SCREEN_TILES_Y).toBe(16);
   });
 
   it('screen dimensions match tile grid', () => {
-    expect(TILE_SIZE * SCREEN_TILES_X).toBe(256);
-    expect(TILE_SIZE * SCREEN_TILES_Y).toBe(240);
+    expect(TILE_SIZE * SCREEN_TILES_X).toBe(512);
+    expect(TILE_SIZE * SCREEN_TILES_Y).toBe(256);
   });
 
-  it('camera zoom is 1 (FitScreenAndFill handles visual scaling)', () => {
+  it('camera zoom is 1 (CSS handles visual scaling)', () => {
     expect(CAMERA_ZOOM).toBe(1);
   });
 });

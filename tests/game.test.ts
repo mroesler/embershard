@@ -21,8 +21,8 @@ describe('game', () => {
     expect(Engine).toHaveBeenCalledOnce();
     expect(Engine).toHaveBeenCalledWith({
       canvasElementId: 'game',
-      width: 256,
-      height: 240,
+      width: 512,
+      height: 256,
       displayMode: DisplayMode.Fixed,
       backgroundColor: Color.Black,
       pixelArt: true,
