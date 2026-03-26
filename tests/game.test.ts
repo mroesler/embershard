@@ -20,9 +20,10 @@ describe('game', () => {
     const { Engine, DisplayMode, Color } = await import('excalibur');
     expect(Engine).toHaveBeenCalledOnce();
     expect(Engine).toHaveBeenCalledWith({
+      canvasElementId: 'game',
       width: 256,
       height: 240,
-      displayMode: DisplayMode.FitScreen,
+      displayMode: DisplayMode.Fixed,
       backgroundColor: Color.Black,
       pixelArt: true,
     });
