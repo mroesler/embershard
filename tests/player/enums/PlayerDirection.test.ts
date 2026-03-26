@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PlayerDirection } from '@/player/api/PlayerDirection';
+import { PlayerDirection } from '@/player/enums/PlayerDirection';
 
 describe('PlayerDirection', () => {
   it('has Down value', () => {

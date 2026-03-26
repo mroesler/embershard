@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { StatsSnapshot } from '@/hud/api/StatsSnapshot';
+import type { StatsSnapshot } from '@/hud/interfaces/StatsSnapshot';
 
 describe('StatsSnapshot', () => {
   it('accepts an object with the expected shape', () => {

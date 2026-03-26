@@ -1,5 +1,5 @@
 import { Animation, AnimationStrategy, ImageSource, Sprite, SpriteSheet } from 'excalibur';
-import { PlayerDirection } from '@/player/api/PlayerDirection';
+import { PlayerDirection } from '@/player/enums/PlayerDirection';
 import {
   ATTACK_FRAME_COUNT,
   ATTACK_FRAME_DURATION_MS,

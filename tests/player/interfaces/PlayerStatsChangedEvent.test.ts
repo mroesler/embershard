@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { PlayerStatsChangedEvent } from '@/player/events/PlayerStatsChangedEvent';
+import type { PlayerStatsChangedEvent } from '@/player/interfaces/PlayerStatsChangedEvent';
 
 describe('PlayerStatsChangedEvent', () => {
   it('holds a readonly stats reference', () => {

@@ -1,5 +1,5 @@
 import { EventEmitter } from 'excalibur';
-import type { PlayerStatsChangedEvent } from '@/player/events/PlayerStatsChangedEvent';
+import type { PlayerStatsChangedEvent } from '@/player/interfaces/PlayerStatsChangedEvent';
 
 export interface PlayerEventMap {
   statsChanged: PlayerStatsChangedEvent;

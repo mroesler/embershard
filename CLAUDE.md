@@ -86,15 +86,16 @@ Use the correct subfolder for every new file:
 
 | Folder | What belongs here |
 |---|---|
-| `api/` | Interfaces, types, enums — contracts only, no executable code |
+| `enums/` | TypeScript enums — named constant sets, no executable logic |
+| `interfaces/` | TypeScript interfaces and type aliases — contracts only, no executable code |
 | `models/` | Concrete data classes — the domain objects |
 | `services/` | Business logic, stateful operations, orchestration |
 | `ui/` | Excalibur Actors, ScreenElements, anything that touches the renderer |
-| `events/` | Event type definitions for cross-module communication |
+| `events/` | Event bus definitions — executable event infrastructure (e.g. EventEmitter instances) |
 | `constants/` | Module-specific constants and configuration values |
 | `src/utils/` | Shared pure utility functions reused across multiple modules |
 
-Only create a subfolder when there is something real to put in it.
+Only create a subfolder when there is something real to put in it. Do not pre-create empty directories.
 
 ---
 

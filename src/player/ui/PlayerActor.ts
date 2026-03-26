@@ -1,7 +1,7 @@
 import { Actor, Engine, Keyboard, Keys, Vector } from 'excalibur';
 import { PlayerStats } from '@/player/models/PlayerStats';
-import { PlayerDirection } from '@/player/api/PlayerDirection';
-import { PlayerState } from '@/player/api/PlayerState';
+import { PlayerDirection } from '@/player/enums/PlayerDirection';
+import { PlayerState } from '@/player/enums/PlayerState';
 import { buildPlayerAnimations } from '@/player/services/PlayerAnimationService';
 import { playerCharacterImage } from '@/player/constants/PlayerAssets';
 import { playerEventBus } from '@/player/events/PlayerEventBus';

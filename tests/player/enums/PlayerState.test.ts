@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { PlayerState } from '@/player/api/PlayerState';
+import { PlayerState } from '@/player/enums/PlayerState';
 
 describe('PlayerState', () => {
   it('has Idle value', () => {

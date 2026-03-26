@@ -1,5 +1,5 @@
 import { playerEventBus } from '@/player/events/PlayerEventBus';
-import type { StatsSnapshot } from '@/hud/api/StatsSnapshot';
+import type { StatsSnapshot } from '@/hud/interfaces/StatsSnapshot';
 
 export class HudService {
   private readonly healthFill: HTMLElement;
