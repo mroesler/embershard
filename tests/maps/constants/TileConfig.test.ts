@@ -16,7 +16,7 @@ describe('TileConfig', () => {
     expect(TILE_SIZE * SCREEN_TILES_Y).toBe(240);
   });
 
-  it('camera zoom is 3x', () => {
-    expect(CAMERA_ZOOM).toBe(3);
+  it('camera zoom is 1 (FitScreenAndFill handles visual scaling)', () => {
+    expect(CAMERA_ZOOM).toBe(1);
   });
 });
