@@ -61,6 +61,16 @@
 
 ## Code Structure
 
+### Naming
+
+- Use full, descriptive names for all variables, functions, methods, classes, and types. No abbreviations.
+- A name must clearly communicate what the thing is or does without requiring context to decode it.
+  - Good: `playerHealth`, `loadOverworldMap`, `calculateDamage`, `TileConfig`
+  - Bad: `plrHp`, `ldMap`, `calcDmg`, `TileCfg`
+- Exception: loop counters `i` and `j` are allowed.
+
+---
+
 ### One file, one concern
 - Every file has a single, clearly named responsibility. If a file is doing two things, split it.
 - File names must reflect their exact purpose: `CombatService.ts`, `EnemyActor.ts`, `InputMap.ts` — not `utils.ts`, `helpers.ts`, `misc.ts`, or `index.ts` (except as a barrel export).
