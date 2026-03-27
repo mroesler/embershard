@@ -1,4 +1,4 @@
-import { Actor, Keyboard, Keys, Vector } from 'excalibur';
+import { Actor, Engine, Keyboard, Keys, Vector } from 'excalibur';
 import { PlayerStats } from '@/player/models/PlayerStats';
 import { PlayerDirection } from '@/player/enums/PlayerDirection';
 import { PlayerState } from '@/player/enums/PlayerState';
