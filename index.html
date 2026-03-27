@@ -1,11 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Embershard</title>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
       body {
         background: #111;
@@ -20,7 +24,7 @@
 
       /*
        * Canvas ratio is 512:352 (game area 512×256 + HUD top 32 + HUD bottom 64), all
-       * rendered at 3× inside the engine. CSS scaling uses nearest-neighbour so tiles
+       * rendered at 3× inside the engine. CSS scaling uses nearest-neighbor so tiles
        * and HUD elements remain pixel-crisp at any display size.
        * max-width = available height × (512 / 352) keeps the canvas fully visible.
        */
