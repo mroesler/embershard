@@ -55,7 +55,6 @@
 
 ### Compatibility Notes
 - `@typescript-eslint` 8.x declares `typescript <6.0.0` as a peer requirement but works correctly with TypeScript 6.0 in practice. Upgrade `@typescript-eslint` to 9.x when it releases with official TS 6.0 support.
-- `tsconfig.json` uses `ignoreDeprecations: "6.0"` to acknowledge the `baseUrl` deprecation (removed in TypeScript 7.0). Migrate to `paths`-only config when TypeScript 7.0 approaches.
 
 ---
 
