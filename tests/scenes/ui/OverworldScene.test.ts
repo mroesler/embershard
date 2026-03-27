@@ -54,7 +54,7 @@ describe('OverworldScene', () => {
     expect(scene.camera.zoom).toBe(3);
   });
 
-  it('sets camera pos to map centre on initialize', async () => {
+  it('sets camera pos to map center on initialize', async () => {
     const { OverworldScene } = await import('@/scenes/ui/OverworldScene');
     const scene = new OverworldScene({ addToScene: mockAddToScene } as never);
     scene.onInitialize();

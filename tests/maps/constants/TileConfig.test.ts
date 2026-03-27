@@ -52,7 +52,7 @@ describe('TileConfig', () => {
     expect(CANVAS_HEIGHT).toBe(HUD_TOP_HEIGHT + GAME_AREA_HEIGHT + HUD_BOTTOM_HEIGHT);
   });
 
-  it('camera initial X is at horizontal map centre in world pixels', () => {
+  it('camera initial X is at horizontal map center in world pixels', () => {
     expect(CAMERA_INITIAL_X).toBe(SCREEN_TILES_X * TILE_SIZE / 2);
   });
 

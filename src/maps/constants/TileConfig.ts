@@ -21,7 +21,7 @@ export const CANVAS_WIDTH = SCREEN_TILES_X * TILE_SIZE * CAMERA_ZOOM; // 1536
 export const CANVAS_HEIGHT = HUD_TOP_HEIGHT + GAME_AREA_HEIGHT + HUD_BOTTOM_HEIGHT; // 1056
 
 /**
- * World-space X the camera starts at — the horizontal centre of the tile map.
+ * World-space X the camera starts at — the horizontal center of the tile map.
  * Expressed in world pixels (independent of zoom).
  */
 export const CAMERA_INITIAL_X = CANVAS_WIDTH / 2 / CAMERA_ZOOM; // 256
