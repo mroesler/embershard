@@ -4,6 +4,26 @@ All notable changes to Embershard will be documented here.
 
 ---
 
+## [0.2.0] — 2026-03-27
+
+### First Playable
+
+The hero walks. The world loads. The HUD watches over it all.
+
+### Added
+
+- **Playable character** — move with WASD, attack with Space. The player spawns at the center of the map and is clamped to the playfield boundaries.
+- **Overworld map** — the Tiled map loads and renders via the Excalibur Tiled plugin. The camera is positioned so the playfield sits between the HUD strips.
+- **Canvas HUD** — HP and MP bars plus a bottom inventory strip are now rendered directly on the game canvas as Excalibur ScreenElements. No HTML overlays.
+- **Crisp rendering at 3× zoom** — the engine renders at 3× internally so canvas text and UI elements stay pixel-sharp at any display size.
+
+### Changed
+
+- Canvas dimensions now derived from a single source of truth in `TileConfig` — `CANVAS_WIDTH`, `CANVAS_HEIGHT`, `HUD_TOP_HEIGHT`, `HUD_BOTTOM_HEIGHT`, and camera position constants.
+- Player spawn and movement bounds updated from camera-centered coordinates to map-origin (0, 0) coordinates.
+
+---
+
 ## [0.1.0] — 2026-03-26
 
 ### Welcome to Embershard
