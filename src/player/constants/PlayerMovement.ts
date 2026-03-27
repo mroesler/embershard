@@ -1,9 +1,9 @@
 /** Character walk speed in pixels per second at game resolution */
 export const WALK_SPEED = 100;
 
-/** Game playfield width in pixels — must match CANVAS_WIDTH in TileConfig */
+/** Game playing field width in pixels — must match CANVAS_WIDTH in TileConfig */
 export const PLAY_AREA_WIDTH = 512;
-/** Game playfield height in pixels — must match GAME_AREA_HEIGHT in TileConfig */
+/** Game playing field height in pixels — must match GAME_AREA_HEIGHT in TileConfig */
 export const PLAY_AREA_HEIGHT = 256;
 
 /** Character collision box width in pixels */
