@@ -70,12 +70,14 @@ vi.mock('@/player/events/PlayerEventBus', () => ({
 
 vi.mock('@/player/constants/PlayerMovement', () => ({
   WALK_SPEED: 100,
+  PLAY_AREA_WIDTH: 512,
+  PLAY_AREA_HEIGHT: 256,
   SPRITE_COLLISION_WIDTH: 16,
   SPRITE_COLLISION_HEIGHT: 32,
-  PLAYER_MIN_X: -248,
-  PLAYER_MAX_X: 248,
-  PLAYER_MIN_Y: -112,
-  PLAYER_MAX_Y: 112,
+  PLAYER_MIN_X: 8,
+  PLAYER_MAX_X: 504,
+  PLAYER_MIN_Y: 16,
+  PLAYER_MAX_Y: 240,
 }));
 
 vi.mock('@/player/constants/PlayerSpriteConfig', () => ({
@@ -342,7 +344,7 @@ describe('PlayerActor', () => {
     const actor = new PlayerActor(new PlayerStats(100, 100));
     actor.pos.x = -999;
     actor.onPostUpdate(makeEngine() as never, 16);
-    expect(actor.pos.x).toBe(-248);
+    expect(actor.pos.x).toBe(8);
   });
 
   it('clamps pos.x to PLAYER_MAX_X when beyond right edge', async () => {
@@ -351,16 +353,16 @@ describe('PlayerActor', () => {
     const actor = new PlayerActor(new PlayerStats(100, 100));
     actor.pos.x = 999;
     actor.onPostUpdate(makeEngine() as never, 16);
-    expect(actor.pos.x).toBe(248);
+    expect(actor.pos.x).toBe(504);
   });
 
   it('leaves pos.x unchanged when within bounds', async () => {
     const { PlayerActor } = await import('@/player/ui/PlayerActor');
     const { PlayerStats } = await import('@/player/models/PlayerStats');
     const actor = new PlayerActor(new PlayerStats(100, 100));
-    actor.pos.x = 0;
+    actor.pos.x = 256;
     actor.onPostUpdate(makeEngine() as never, 16);
-    expect(actor.pos.x).toBe(0);
+    expect(actor.pos.x).toBe(256);
   });
 
   it('clamps pos.y to PLAYER_MIN_Y when beyond top edge', async () => {
@@ -369,7 +371,7 @@ describe('PlayerActor', () => {
     const actor = new PlayerActor(new PlayerStats(100, 100));
     actor.pos.y = -999;
     actor.onPostUpdate(makeEngine() as never, 16);
-    expect(actor.pos.y).toBe(-112);
+    expect(actor.pos.y).toBe(16);
   });
 
   it('clamps pos.y to PLAYER_MAX_Y when beyond bottom edge', async () => {
@@ -378,15 +380,15 @@ describe('PlayerActor', () => {
     const actor = new PlayerActor(new PlayerStats(100, 100));
     actor.pos.y = 999;
     actor.onPostUpdate(makeEngine() as never, 16);
-    expect(actor.pos.y).toBe(112);
+    expect(actor.pos.y).toBe(240);
   });
 
   it('leaves pos.y unchanged when within bounds', async () => {
     const { PlayerActor } = await import('@/player/ui/PlayerActor');
     const { PlayerStats } = await import('@/player/models/PlayerStats');
     const actor = new PlayerActor(new PlayerStats(100, 100));
-    actor.pos.y = 0;
+    actor.pos.y = 128;
     actor.onPostUpdate(makeEngine() as never, 16);
-    expect(actor.pos.y).toBe(0);
+    expect(actor.pos.y).toBe(128);
   });
 });

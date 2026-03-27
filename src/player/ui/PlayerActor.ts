@@ -6,6 +6,8 @@ import { buildPlayerAnimations } from '@/player/services/PlayerAnimationService'
 import { playerCharacterImage } from '@/player/constants/PlayerAssets';
 import { playerEventBus } from '@/player/events/PlayerEventBus';
 import {
+  PLAY_AREA_HEIGHT,
+  PLAY_AREA_WIDTH,
   PLAYER_MAX_X,
   PLAYER_MAX_Y,
   PLAYER_MIN_X,
@@ -29,7 +31,7 @@ export class PlayerActor extends Actor {
 
   constructor(playerStats: PlayerStats) {
     super({
-      pos: Vector.Zero,
+      pos: new Vector(PLAY_AREA_WIDTH / 2, PLAY_AREA_HEIGHT / 2),
       width: SPRITE_COLLISION_WIDTH,
       height: SPRITE_COLLISION_HEIGHT,
       anchor: new Vector(0.5, 0.5),

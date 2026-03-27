@@ -1,5 +1,10 @@
 import { describe, it, expect, vi } from 'vitest';
 
+vi.mock('@/maps/constants/TileConfig', () => ({
+  CANVAS_WIDTH: 512,
+  CANVAS_HEIGHT: 352,
+}));
+
 vi.mock('excalibur', () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const MockEngine = vi.fn(function (this: any, _config: unknown) { Object.assign(this, {}); });
@@ -22,7 +27,7 @@ describe('game', () => {
     expect(Engine).toHaveBeenCalledWith({
       canvasElementId: 'game',
       width: 512,
-      height: 256,
+      height: 352,
       displayMode: DisplayMode.Fixed,
       backgroundColor: Color.Black,
       pixelArt: true,

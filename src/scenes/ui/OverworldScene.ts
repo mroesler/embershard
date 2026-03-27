@@ -1,6 +1,6 @@
-import { Scene } from 'excalibur';
+import { Scene, Vector } from 'excalibur';
 import { TiledResource } from '@excaliburjs/plugin-tiled';
-import { CAMERA_ZOOM } from '@/maps/constants/TileConfig';
+import { CAMERA_ZOOM, CAMERA_INITIAL_X, CAMERA_INITIAL_Y } from '@/maps/constants/TileConfig';
 import { PlayerStats } from '@/player/models/PlayerStats';
 import { DEFAULT_MAX_HEALTH, DEFAULT_MAX_MANA } from '@/player/constants/PlayerDefaults';
 import { PlayerActor } from '@/player/ui/PlayerActor';
@@ -20,8 +20,9 @@ export class OverworldScene extends Scene {
 
   onInitialize(): void {
     this.camera.zoom = CAMERA_ZOOM;
+    this.camera.pos = new Vector(CAMERA_INITIAL_X, CAMERA_INITIAL_Y);
     this.tiledMap.addToScene(this);
-    this.hudService.initialize(this.playerStats);
+    this.hudService.initialize(this, this.playerStats);
     this.add(this.playerActor);
   }
 }

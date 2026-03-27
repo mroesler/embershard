@@ -6,8 +6,14 @@ const mockAdd = vi.fn();
 
 vi.mock('excalibur', () => ({
   Scene: class MockScene {
-    camera = { zoom: 0 };
+    camera = { zoom: 0, pos: null as unknown, offset: null as unknown };
     add = mockAdd;
+  },
+  Vector: class MockVector {
+    constructor(
+      public x: number,
+      public y: number,
+    ) {}
   },
 }));
 
@@ -16,7 +22,9 @@ vi.mock('@excaliburjs/plugin-tiled', () => ({
 }));
 
 vi.mock('@/maps/constants/TileConfig', () => ({
-  CAMERA_ZOOM: 1,
+  CAMERA_ZOOM: 3,
+  CAMERA_INITIAL_X: 256,
+  CAMERA_INITIAL_Y: 144,
 }));
 
 vi.mock('@/player/models/PlayerStats', () => ({
@@ -43,7 +51,14 @@ describe('OverworldScene', () => {
     const { OverworldScene } = await import('@/scenes/ui/OverworldScene');
     const scene = new OverworldScene({ addToScene: mockAddToScene } as never);
     scene.onInitialize();
-    expect(scene.camera.zoom).toBe(1);
+    expect(scene.camera.zoom).toBe(3);
+  });
+
+  it('sets camera pos to map centre on initialize', async () => {
+    const { OverworldScene } = await import('@/scenes/ui/OverworldScene');
+    const scene = new OverworldScene({ addToScene: mockAddToScene } as never);
+    scene.onInitialize();
+    expect(scene.camera.pos).toEqual({ x: 256, y: 144 });
   });
 
   it('adds the tiled map to the scene on initialize', async () => {
@@ -53,11 +68,11 @@ describe('OverworldScene', () => {
     expect(mockAddToScene).toHaveBeenCalledWith(scene);
   });
 
-  it('initializes the HudService with player stats on initialize', async () => {
+  it('initializes the HudService with scene and player stats on initialize', async () => {
     const { OverworldScene } = await import('@/scenes/ui/OverworldScene');
     const scene = new OverworldScene({ addToScene: mockAddToScene } as never);
     scene.onInitialize();
-    expect(mockHudInitialize).toHaveBeenCalledWith(expect.any(Object));
+    expect(mockHudInitialize).toHaveBeenCalledWith(scene, expect.any(Object));
   });
 
   it('adds the PlayerActor to the scene on initialize', async () => {
