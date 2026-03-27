@@ -58,6 +58,14 @@
 
 ---
 
+## Language
+
+Use **American English** spelling in all files, comments, commit messages, and documentation.
+
+- `neighbor` not `neighbour`, `color` not `colour`, `organize` not `organise`, etc.
+
+---
+
 ## Code Structure
 
 ### Naming
