@@ -1,4 +1,4 @@
-import { Actor, Engine, Keyboard, Keys, Vector } from 'excalibur';
+import { Actor, Keyboard, Keys, Vector } from 'excalibur';
 import { PlayerStats } from '@/player/models/PlayerStats';
 import { PlayerDirection } from '@/player/enums/PlayerDirection';
 import { PlayerState } from '@/player/enums/PlayerState';
@@ -39,7 +39,7 @@ export class PlayerActor extends Actor {
     this.playerStats = playerStats;
   }
 
-  override onInitialize(_engine: Engine): void {
+  override onInitialize(): void {
     const animations = buildPlayerAnimations(playerCharacterImage);
     const directions = [
       PlayerDirection.Down,
@@ -75,7 +75,7 @@ export class PlayerActor extends Actor {
     this.processMovement(keyboard);
   }
 
-  override onPostUpdate(_engine: Engine, _elapsedMs: number): void {
+  override onPostUpdate(): void {
     this.pos.x = Math.max(PLAYER_MIN_X, Math.min(PLAYER_MAX_X, this.pos.x));
     this.pos.y = Math.max(PLAYER_MIN_Y, Math.min(PLAYER_MAX_Y, this.pos.y));
   }
