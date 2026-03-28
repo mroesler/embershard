@@ -3,12 +3,17 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 // ── Excalibur mock ────────────────────────────────────────────────────────────
 const mockGraphicsAdd = vi.fn();
 const mockGraphicsUse = vi.fn();
+const mockAnimationReset = vi.fn();
 
 vi.mock('excalibur', () => {
+  class MockAnimation {
+    reset = mockAnimationReset;
+  }
+  const mockCurrentAnimation = new MockAnimation();
   class MockActor {
     pos = { x: 0, y: 0 };
     vel = { x: 0, y: 0 };
-    graphics = { add: mockGraphicsAdd, use: mockGraphicsUse };
+    graphics = { add: mockGraphicsAdd, use: mockGraphicsUse, current: mockCurrentAnimation };
     constructor(_options?: unknown) {}
     onInitialize(_engine: unknown): void {}
     onPreUpdate(_engine: unknown, _elapsed: number): void {}
@@ -26,7 +31,7 @@ vi.mock('excalibur', () => {
     ) {}
     static Zero = new MockVector(0, 0);
   }
-  return { Actor: MockActor, Keys, Vector: MockVector, Keyboard: class {} };
+  return { Actor: MockActor, Animation: MockAnimation, Keys, Vector: MockVector, Keyboard: class {} };
 });
 
 // ── Dependency mocks ──────────────────────────────────────────────────────────
@@ -324,6 +329,18 @@ describe('PlayerActor', () => {
     mockGraphicsUse.mockClear();
     actor.onPreUpdate(makeEngine([]) as never, 100); // 100ms < 400ms total
     expect(mockGraphicsUse).not.toHaveBeenCalled();
+  });
+
+  it('resets the attack animation on every attack so all frames play from the start', async () => {
+    const { PlayerActor } = await import('@/player/ui/PlayerActor');
+    const { PlayerStats } = await import('@/player/models/PlayerStats');
+    const actor = new PlayerActor(new PlayerStats(100, 100));
+    actor.onInitialize(makeEngine() as never);
+    actor.onPreUpdate(makeEngine([], ['Space']) as never, 16); // first attack
+    expect(mockAnimationReset).toHaveBeenCalledTimes(1);
+    actor.onPreUpdate(makeEngine([]) as never, 400); // finish attack
+    actor.onPreUpdate(makeEngine([], ['Space']) as never, 16); // second attack
+    expect(mockAnimationReset).toHaveBeenCalledTimes(2);
   });
 
   it('attacks in the current facing direction', async () => {

@@ -1,4 +1,4 @@
-import { Actor, Engine, Keyboard, Keys, Vector } from 'excalibur';
+import { Actor, Animation, Engine, Keyboard, Keys, Vector } from 'excalibur';
 import { PlayerStats } from '@/player/models/PlayerStats';
 import { PlayerDirection } from '@/player/enums/PlayerDirection';
 import { PlayerState } from '@/player/enums/PlayerState';
@@ -85,6 +85,10 @@ export class PlayerActor extends Actor {
     this.attackElapsedTime = 0;
     this.vel = Vector.Zero;
     this.graphics.use(`attack-${this.facingDirection}`);
+    const attackAnimation = this.graphics.current;
+    if (attackAnimation instanceof Animation) {
+      attackAnimation.reset();
+    }
   }
 
   private exitAttackState(): void {
